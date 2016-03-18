@@ -1,0 +1,13 @@
+hypriot_lirc:
+  build: .
+  ports: 
+    - "8002:8080"
+    - "9001:9001"
+  volumes:
+    - "/root/dockers/hypriot-lirc/conf:/etc/lirc/conf"
+    - "/sys/bus/w1/devices:/sys/bus/w1/devices"
+  devices:
+    - "/dev/mem:/dev/mem"
+    - "/dev/lirc0:/dev/lirc0"
+  environment: # used for sensor aliases
+    - sensor_00000483ba1a=chiller
