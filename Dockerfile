@@ -17,19 +17,16 @@ RUN easy_install Flask
 RUN easy_install mimerender
 RUN easy_install supervisor
 
-#COPY ./supervisor.conf /etc/supervisor/
-
 EXPOSE 8080
 
 RUN mkdir /var/run/lirc
-COPY ./bin/restserver.py /restserver.py
-RUN chmod +x /restserver.py
+COPY ./bin/app.py /app.py
+RUN chmod +x /app.py
 
 COPY ./supervisor/supervisor.conf /etc/supervisor.conf
 COPY ./supervisor/lircd.conf /etc/supervisor/conf.d/lircd.conf
 CMD ["supervisord","-c","/etc/supervisor.conf"]
 
-#CMD ["irsend","SEND_ONCE","led","KEY_POWER"]
 
 
 
