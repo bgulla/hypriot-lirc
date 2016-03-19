@@ -42,9 +42,9 @@ def write_file(cmd):
 @app.route('/todo/api/v1.0/tasks/<string:task_id>', methods=['GET'])
 def get_task(task_id):
     print "[heard] " + task_id 
+    toggle_power()
     write_file(task_id)
     return
-    toggle_power()
     task = [task for task in tasks if task['id'] == task_id]
     return jsonify({'task': task[1]})
     if len(task) == 0:
