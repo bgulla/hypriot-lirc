@@ -10,7 +10,9 @@ app = Flask(__name__)
 def send_remote_code(cmd_code):
     command = "irsend SEND_ONCE led " + cmd_code
     os.system(command)
-    print "[SENT] " + command
+    print "[SENT] " + command # Debug purposes
+    return "{'cmd', '%s'}" % (cmd_code)
+    return jsonify({'cmd', cmd_code})
 
 
 #@app.route('/todo/api/v1.0/tasks', methods=['GET'])
