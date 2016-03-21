@@ -9,5 +9,3 @@ hypriot_lirc:
   devices:
     - "/dev/mem:/dev/mem"
     - "/dev/lirc0:/dev/lirc0"
-  environment: # used for sensor aliases
-    - sensor_00000483ba1a=chiller
