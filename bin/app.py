@@ -2,9 +2,11 @@
 from flask import Flask, jsonify
 from flask import request
 from flask import abort
+from flask.ext.cors import CORS
 import os
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/bar/api/v1.0/remote/<string:cmd_code>', methods=['GET'])
 def send_remote_code(cmd_code):
