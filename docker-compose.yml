@@ -4,7 +4,7 @@ hypriot_lirc:
     - "8002:8080"
     - "9001:9001"
   volumes:
-    - "/root/dockers/hypriot-lirc/conf:/etc/lirc/"
+    - "/opt/projects/hypriot-lirc/conf:/etc/lirc/"
     - "/sys/bus/w1/devices:/sys/bus/w1/devices"
   devices:
     - "/dev/mem:/dev/mem"
