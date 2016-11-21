@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--  http://v4-alpha.getbootstrap.com/examples/narrow-jumbotron/# -->
+
+<h1>&gt; let there be light </h1>
+<p style="margin-top:0px; font-size:8px;">woo.</p>
+<br>
+
+<h3>States</h3>
+<a href="http://localhost:{{ port }}/bar/api/v1.0/remote/KEY_POWER">Power Toggle</a>
+<br />
+<a href="http://localhost:{{ port }}/bar/api/v1.0/remote/POWER_ON">ON</a>
+<a href="http://localhost:{{ port }}/bar/api/v1.0/remote/POWER_OFF">OFF</a>
+<h3>Colors</h3>
+<a href="http://localhost:{{ port }}/bar/api/v1.0/remote/POWER_ON">Purple</a>
+<a href="http://localhost:{{ port }}/bar/api/v1.0/remote/POWER_ON">Orange</a>
+
+
+<br>
+
+
+{% endblock %}
