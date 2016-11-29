@@ -18,6 +18,34 @@ if not os.path.isfile(CONFIG_FILE):
     print "[FATAL] missing settings.cfg file."
     exit()
 
+import collections
+
+colors = collections.OrderedDict()
+colors['#FFFFFE'] = ""
+colors['#FFFFFF'] = ""
+colors['#000000'] = ""
+colors['#E33939'] = ""
+
+colors['#24AD75'] = ""
+colors['#2854C1'] = ""
+colors['#F8FFFF'] = ""
+colors['#FF7927'] = ""
+colors['#7DE5AA'] = ""
+colors['#2A91F0'] = ""
+colors['#FDBCDA'] = ""
+colors['#FF7E56'] = ""
+colors['#7AD1E4'] = ""
+colors['#484F79'] = ""
+colors['#F0B5E3'] = ""
+colors['#FEA049'] = ""
+colors['#3BAFEA'] = ""
+colors['#975A95'] = ""
+colors['#B2F0FF'] = ""
+colors['#F1E461'] = ""
+colors['#1197D4'] = ""
+colors['#CB7DD3'] = ""
+colors['#A2DDEF'] = ""
+
 settings.read(CONFIG_FILE)
 port = settings.defaults()['port']
 photocell_pin = settings.defaults()['photocell_pin']
@@ -51,6 +79,10 @@ def send_remote_code(cmd_code):
 def gimmiedat(cmd_code):
     port = 8080
     return render_template("index.html", port=port)
+
+@app.route('/ui', methods=['GET'])
+def gimmiedat2():
+    return render_template("remote.html")
 
 
 
