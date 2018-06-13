@@ -10,6 +10,12 @@ POWER_OFF='POWER_OFF'
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
+def get_conf():
+    content = ""
+    with open('/etc/lirc/lircd.conf','r') as fo:
+        content = fo.read()
+        return content
+
 @app.route('/api/<string:cmd_code>', methods=['GET'])
 def send_remote_code(cmd_code):
     """
@@ -29,22 +35,9 @@ def home():
     if request.method == 'POST':
         if request.form['cmd_code']:
             send_remote_code(request.form['cmd_code'])
-            return render_template("index.html", cmd=request.form['cmd_code'])
+            return render_template("index.html", cmd=request.form['cmd_code'], conf=get_conf())
     else:
-        return render_template("index.html")
-
-
-"""
-@app.route('/', methods=['GET', 'POST']) #this is called a decorator
-def home():
-    cow = cowsay.cowsay("moo")
-    if request.method == 'POST':
-        if request.form['text']:
-            moo_text = request.form['text']
-            cow = cowsay.cowsay(moo_text)
-            app.logger.info('[Moo] '+ unicode(now.replace(microsecond=0)) + "\t" + request.remote_addr + "\t" + moo_text)
-    return render_template("index.html", cow=cow)
-    """
+        return render_template("index.html", conf=get_conf())
 
 
 
