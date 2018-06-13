@@ -15,11 +15,14 @@ be sure to change the pin number to reflect your hardware setup.
 
 
 # Web UI 
-http://<host>:8080
+Visit the web interface at http://pi:8080. 
 # API
-http://<host>:8080/api/<cmd_code>
+```bash
+#http://pi:8080/api/<cmd_code>
+curl http://pi:8080/KEY_POWER
+```
 # Building
-```docker build -t blgulla/hypriot-lirc .```
+```docker build -t blgulla/rpi-lirc .```
 
 # Running
 ```bash
@@ -27,11 +30,6 @@ docker run --rm -t \
   -p 8080:8080 -p 9001:9001 \
   -v ${PWD}/conf/hardware.conf:/etc/lirc/hardware.conf \
   -v ${PWD}/conf/lircd.conf:/etc/lirc/lircd.conf \
-  --privileged bgulla/lirc
+  --privileged bgulla/rpi-lirc
 ```
-
-lirc_dev
-
-lirc_rpi gpio_in_pin=23 gpio_out_pin=22
-dtoverlay=lirc-rpi,gpio_out_pin=22
 
