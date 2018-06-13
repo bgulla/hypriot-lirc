@@ -19,7 +19,7 @@ Visit the web interface at http://pi:8080.
 # API
 ```bash
 #http://pi:8080/api/<cmd_code>
-curl http://pi:8080/KEY_POWER
+curl http://pi:8080/api/KEY_POWER
 ```
 # Building
 ```docker build -t blgulla/rpi-lirc .```
