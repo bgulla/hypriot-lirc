@@ -1,28 +1,17 @@
-FROM resin/rpi-raspbian:jessie
-MAINTAINER Brandon Gulla <im@brandongulla.com>
+FROM resin/rpi-raspbian
+MAINTAINER <brandon@brandongulla.com>
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    python \
-    python-dev \
-    python-setuptools \
-    python-virtualenv \
-    inputlirc \
-    lirc \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update; apt-get install -y inputlirc lirc python-dev  python-setuptools python-pip python-smbus python-rpi.gpio ; apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+COPY ./requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 
-RUN easy_install Flask
-RUN easy_install mimerender
-RUN easy_install supervisor
-RUN easy_install flask-cors
 
 EXPOSE 8080
 
 RUN mkdir /var/run/lirc
-COPY ./bin/app.py /app.py
-RUN chmod +x /app.py
+COPY ./src /app
+RUN chmod +x /app/app.py
 
 COPY ./supervisor/supervisor.conf /etc/supervisor.conf
 COPY ./supervisor/lircd.conf /etc/supervisor/conf.d/lircd.conf
