@@ -33,8 +33,3 @@ docker run --rm -t \
   --privileged bgulla/rpi-lirc
 ```
 
-lirc_dev
-
-lirc_rpi gpio_in_pin=23 gpio_out_pin=22
-dtoverlay=lirc-rpi,gpio_out_pin=22
-
