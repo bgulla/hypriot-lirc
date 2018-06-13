@@ -1,14 +1,19 @@
 # IR Remote Control via REST 
+![The Bar That Started It All](https://github.com/bgulla/hypriot-lirc/blob/master/img/screenshot.png?raw=true)
 LIRC is hard, clunky and not very web friendly. This docker will stand up a webservice to send commands to LIRC via a simple curl command. 
 
 # Prerequisites
-``` echo ```
+``` todo ```
 
+# Web UI 
+todo
+# API
+todo
 # Building
 ```docker build -t blgulla/hypriot-lirc .```
 
 # Running
-```docker run -t --device "/dev/lirc0:/dev/lirc0" blgulla/hypriot-lirc ```
+```docker run -t --privileged  blgulla/hypriot-lirc ```
 
 
 lirc_dev

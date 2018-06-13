@@ -10,11 +10,12 @@
 <div class="jumbotron">
 
 
-    <p>
+    <!--<p>
         <a class="btn btn-lg btn-danger" href="#" role="button">POWER_ON</a> <span style="20px;">&nbsp;</span>
         <a class="btn btn-lg btn-danger" href="#" role="button">POWER_OFF</a>
-    </p>
+    </p>-->
     <!--Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.--></p>
+    <p style="font-size:16px; text-align:left;" >> irsend SEND_ONCE led ___ </p>
     <br/>
     <form action="/" method="post">
     <p>
@@ -23,12 +24,19 @@
         <button type="submit" class="btn btn-primary">send cmd</button>
     </p>
     </form>
-
+<p>
+<hr/>
+    {% if cmd %}
+         <p> sent: {{cmd}}</p>
+    {% else %}
+        <p> waiting for cmd </p>
+    {% endif %}
+</p>
 </div>
 
 
 <footer class="footer">
-    <p></p>
+    <p>be sure that you loaded your lirc config files</p>
 </footer>
 
 {% endblock %}

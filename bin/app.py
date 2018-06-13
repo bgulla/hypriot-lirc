@@ -17,32 +17,21 @@ def send_remote_code(cmd_code):
     :param cmd_code:
     :return:
     """
-    if cmd_code == POWER_ON:
-        #remotelib.power_on()
-        return gimmiedat()
-    elif cmd_code == POWER_OFF:
-        #remotelib.power_off()
-        return gimmiedat()
+
     command = "irsend SEND_ONCE led " + cmd_code
     os.system(command)
     print "[SENT] " + command # Debug purposes
     return cmd_code
 
 
-@app.route('/index/<string:cmd_code>', methods=['GET'])
-def gimmiedat(cmd_code):
-    port = 8080
-    return render_template("index.html", port=port)
-
 @app.route('/', methods=['GET','POST'])
 def home():
     if request.method == 'POST':
         if request.form['cmd_code']:
-            path ="/api/" +str(request.form['cmd_code'])
-            redirect(path)
-
-
-    return render_template("index.html")
+            send_remote_code(request.form['cmd_code'])
+            return render_template("index.html", cmd=request.form['cmd_code'])
+    else:
+        return render_template("index.html")
 
 
 """
